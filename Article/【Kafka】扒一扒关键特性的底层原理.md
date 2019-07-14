@@ -20,7 +20,7 @@
 
 关于Kafka的高性能，主要是因为它在实现上利用了操作系统一些底层的优化技术，尽管作为写业务代码的程序员，这些底层知识也是需要了解的。
 
-![](https://github.com/Sojournerhhy/MarkdownPhotosRepository/blob/master/Res/ArticlePic/Kafka%E9%AB%98%E6%80%A7%E8%83%BD.jpg?raw=true)
+![](https://github.com/HoyingHan/MarkdownPhotosRepository/blob/master/Res/ArticlePic/Kafka%E9%AB%98%E6%80%A7%E8%83%BD.jpg?raw=true)
 
 **【优化一】零拷贝**
 
@@ -28,7 +28,7 @@
 
 - **传统方式：**
 
-![](https://github.com/Sojournerhhy/MarkdownPhotosRepository/blob/master/Res/ArticlePic/%E9%9B%B6%E6%8B%B7%E8%B4%9D-%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F.png?raw=true)
+![](https://github.com/HoyingHan/MarkdownPhotosRepository/blob/master/Res/ArticlePic/%E9%9B%B6%E6%8B%B7%E8%B4%9D-%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F.png?raw=true)
 
 
 
@@ -38,13 +38,13 @@
 
   从图中可看出，零拷贝省略了拷贝到用户缓冲的步骤，通过文件描述符，直接从内核空间将数据复制到网卡接口。
 
-![](https://github.com/Sojournerhhy/MarkdownPhotosRepository/blob/master/Res/ArticlePic/%E9%9B%B6%E6%8B%B7%E8%B4%9D-%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%96%B9%E5%BC%8F.png?raw=true)
+![](https://github.com/HoyingHan/MarkdownPhotosRepository/blob/master/Res/ArticlePic/%E9%9B%B6%E6%8B%B7%E8%B4%9D-%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%96%B9%E5%BC%8F.png?raw=true)
 
 **【优化二】顺序写入磁盘**
 
 - 写入消息时，采用文件追加的方式，并且不允许修改已经写入的消息，于是写入磁盘的方式是顺序写入。我们通常认为的基于磁盘读写性能较差，指的是基于磁盘的随机读写；事实上，基于磁盘的顺序读写，性能接近于内存的随机读写，以下是性能对比图：
 
-  ![](https://github.com/Sojournerhhy/MarkdownPhotosRepository/blob/master/Res/ArticlePic/%E8%AF%BB%E5%86%99%E6%80%A7%E8%83%BD.png?raw=true)
+  ![](https://github.com/HoyingHan/MarkdownPhotosRepository/blob/master/Res/ArticlePic/%E8%AF%BB%E5%86%99%E6%80%A7%E8%83%BD.png?raw=true)
 
   
 
@@ -93,7 +93,7 @@ Kafka的**副本机制**是保证其可靠性的核心。
 
    分区机制和副本机制知识点：
 
-![](https://github.com/Sojournerhhy/MarkdownPhotosRepository/blob/master/Res/ArticlePic/Kafka%E5%88%86%E5%8C%BA%E5%89%AF%E6%9C%AC.jpg?raw=true)
+![](https://github.com/HoyingHan/MarkdownPhotosRepository/blob/master/Res/ArticlePic/Kafka%E5%88%86%E5%8C%BA%E5%89%AF%E6%9C%AC.jpg?raw=true)
 
 #### 3.顺序性
 
@@ -109,7 +109,7 @@ Kafka的**副本机制**是保证其可靠性的核心。
 
 ​    这里盗一张图阐述上述概念间的关系
 
-![](https://github.com/Sojournerhhy/MarkdownPhotosRepository/blob/master/Res/ArticlePic/broker-topic.jpg?raw=true)
+![](https://github.com/HoyingHan/MarkdownPhotosRepository/blob/master/Res/ArticlePic/broker-topic.jpg?raw=true)
 
 
 
@@ -143,7 +143,7 @@ Kafka的**副本机制**是保证其可靠性的核心。
 
 
 
-##### 参考;
+##### 参考
 
 - 《Kafka权威指南》
 
