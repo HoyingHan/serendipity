@@ -6,7 +6,11 @@
 
 ##### 简介
 
-RDD：弹性分布式数据集
+RDD：弹性分布式数据集，对分布式内存的抽象
+
+Spark API 的所有操作都是基于 RDD 的
+
+目的：为了减少网络及磁盘 IO 开销
 
 
 
@@ -34,19 +38,23 @@ RDD：弹性分布式数据集
 
 
 
-##### 转换（延迟执行）
+##### 转换操作（延迟执行）
 
-- 基本操作
+- 对单条Record
   1. filter
   2. map
   3. flatMap
-- 键值对（Pair RDD）
+- 对键值对（Pair RDD）中record的value
+  1. 
+- 对分区shuffle
   1. reduceByKey
   2. groupByKey
   3. sortByKey
   4. join
   5. union
   6. mapPartitions
+  7. repartition
+  8. repartitionAndSortWithinPartitions
 
 
 
@@ -62,4 +70,4 @@ RDD：弹性分布式数据集
 2. take
 3. first
 4. foreach
-5. collect
+5. collect：拉取rdd中所有数据到driver节点，转换成一个数组，如果数据量过大，会造成driver的OOM
