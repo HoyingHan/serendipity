@@ -37,3 +37,12 @@ Driver进程：
 1. Task执行代码（20%）
 2. Task通过shuffle拉取上一个Stage中Task的输出，目的是为了聚合等操作（20%）
 3. RDD持久化（60%）
+
+
+
+### 【Spark】运行模式
+
+- **本地模式**
+  - local[N]
+- **Yarn模式**
+  - spark-submit --class XXX --master yarn-client
