@@ -34,7 +34,11 @@ Spark API 的所有操作都是基于 RDD 的
 
 ##### 创建
 
+1. 并行化集合创建
 
+   `val distData = sc.parallelize(Array(1,2,3,4))`
+
+2. 
 
 
 
@@ -42,18 +46,54 @@ Spark API 的所有操作都是基于 RDD 的
 
 - 对单条Record
   1. filter
+  
+     `sc.parallelize(Array(1,2,3,4)).filter(_ > 1).collect()`
+  
+     `res1: Array[Int] = Array(2, 3, 4)`
+  
   2. map
+  
+     `sc.parallelize(Array(1,2,3,4)).map(x=>x+1).collect()`
+  
+     `res2: Array[Int] = Array(2, 3, 4, 5)`
+  
   3. flatMap
-- 对键值对（Pair RDD）中record的value
-  1. 
+  
+     `sc.parallelize(Array(1,2,3,4)).flatMap(x=> Array(x+1,x+10)).collect()`
+  
+     `res5: Array[Int] = Array(2, 11, 3, 12, 4, 13, 5, 14)`
+
+
+
 - 对分区shuffle
-  1. reduceByKey
-  2. groupByKey
+  1. reduceByKey：按照key分组然后聚集
+  
+     `sc.parallelize(Array( "a" -> 1,"a" ->2,"a" ->3, "b" -> 4)).reduceByKey((x,y)=> x+y).collect`
+  
+     `res1: Array[(String, Int)] = Array((a,6), (b,4))`
+  
+     
+  
+  2. groupByKey：针对(K, V)类型，返回(K, Iterable<V>)类型的数据集
+  
+     `sc.parallelize(Array( "a" -> 1,"a" ->2, "b" -> 3))`
+  
+     `res2: Array[(String, Iterable[Int])] = Array((a,CompactBuffer(1, 2)), (b,CompactBuffer(3)))`
+  
   3. sortByKey
+  
   4. join
+  
   5. union
+  
   6. mapPartitions
+  
+     `sc.parallelize(Array(1,2,3,4)).mapPartitions(x=> x.map(_+1)).collect()`
+  
+     `res1: Array[Int] = Array(2, 3, 4, 5)  `
+  
   7. repartition
+  
   8. repartitionAndSortWithinPartitions
 
 
