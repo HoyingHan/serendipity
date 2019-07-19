@@ -2,6 +2,12 @@
 
 
 
+
+
+
+
+
+
 spark-submit
 
 会启动一个对应的Driver进程
@@ -46,3 +52,10 @@ Driver进程：
   - local[N]
 - **Yarn模式**
   - spark-submit --class XXX --master yarn-client
+
+
+
+
+
+### 基本运行流程
+

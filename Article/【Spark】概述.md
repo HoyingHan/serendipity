@@ -8,7 +8,11 @@ Driver 进程：包含 SparkContext 实例主程序
 
 Master/Salve结构
 
+### 与Hadoop的比较
 
+- 编程模型更灵活
+- 迭代运算效率高 - 内存计算
+- 
 
 ### 实验环境
 
