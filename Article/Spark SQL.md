@@ -3,10 +3,8 @@
 ### 简介
 
 - 处理结构化数据的Spark组件
-
-
-
-
+- 增加了SchemaRDD，数据既可以来自RDD，也可以是Hive、HDFS、Cassandra等外部数据源，还可以是JSON格式的数据
+- 
 
 ### DataFrame
 
