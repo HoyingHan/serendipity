@@ -25,8 +25,6 @@
 
 > table:底层的hash数组，是Node类型数组，可以把这个数组的每个位置理解为一个桶，每个桶存着一个链表，链表的目的是采用拉链法解决
 >
-> entrySet:
->
 > size: HashMap中实际存在的键值对数量
 >
 > threshold: HashMap所能容纳的最大数据量的Node(键值对)个数。threshold = length * Load factor。也就是说，在数组定义好长度之后，负载因子越大，所能容纳的键值对个数越多

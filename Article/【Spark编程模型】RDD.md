@@ -1,5 +1,18 @@
 ## 【Spark编程模型】RDD
 
+最近由于工作需要，学习了关于Hive，Spark的相关知识，毕竟不是专门的数据方向，但可以对没有相关经验，但想对此有初步了解的同学做个参考。
+
+### 环境
+
+针对这个目标，其他步骤我选择尽量简化，避免一些环境和配置问题耽误过多的时间（呃···说白了就是懒，上述都是借口~）
+
+这是一个在镜像仓库找到的可用的镜像，拉取下来就可以做实验啦~
+
+镜像地址：hub.c.163.com/liweigu/spark
+
+创建容器之后，执行"docker exec -it spark1 /bin/sh"进入容器
+
+启动文件在 /soft/spark-2.1.1-bin-hadoop2.7/bin
 
 
 ###  概念
@@ -8,11 +21,13 @@
 
 RDD：
 
+它是Spark编程的核心，Spark API 的所有操作都是基于 RDD 的，你要牢牢记住它，这将是你在coding过程中一直打交道的兄弟。
+
 分布式对象集合，本质上提供了一种高度受限的共享内存模型，即RDD是只读的记录分区的集合，不能直接修改
 
 弹性分布式数据集，对分布式内存的抽象
 
-Spark API 的所有操作都是基于 RDD 的
+
 
 目的：为了减少网络及磁盘 IO 开销
 
@@ -60,9 +75,6 @@ RDD，供给下一个转换操作使用
    val distData = sc.parallelize(Array(1,2,3,4))
    ```
 
-   
-
-2. 
 
 
 
@@ -78,14 +90,14 @@ RDD，供给下一个转换操作使用
 
      
 
-  2. map
+  2. map(func)：每个元素执行func，输入：输出=1:1
 
      ```scala
      sc.parallelize(Array(1,2,3,4)).map(x=>x+1).collect()
      res2: Array[Int] = Array(2, 3, 4, 5)
      ```
 
-  3. flatMap
+  3. flatMap(func)：与map()相似，但输入：输出=1：N
 
      ```scala
      sc.parallelize(Array(1,2,3,4)).flatMap(x=> Array(x+1,x+10)).collect()
@@ -95,7 +107,7 @@ RDD，供给下一个转换操作使用
      
 
 - 对分区shuffle
-  1. reduceByKey：按照key分组然后聚集，返回一个新的(K, V)形式的数据集，其中的每个值是将每个key传递到函数func中进行聚合
+  1. reduceByKey：按key聚合，返回新的(K, Iterable<V>)
 
      ```scala
      sc.parallelize(Array( "a" -> 1,"a" ->2,"a" ->3, "b" -> 4)).reduceByKey((x,y)=> x+y).collect()
